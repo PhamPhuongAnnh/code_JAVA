@@ -3,11 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package bai13_2;
 
 /**
  *
  * @author phuon
  */
-public class Bai13 {
+public class book extends key_value<String, String>{
+
+    public book(String key, String value) {
+        super(key, value);
+    }
     
 }
