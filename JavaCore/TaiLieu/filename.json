@@ -1,0 +1,44 @@
+[
+	{
+		"classname": "T1907A",
+		"address": "8 Ton That Thuyet, Cau Giay, HN",
+		"teacher": {
+			"fullname": "Tran Van A",
+			"age": 32,
+			"address": "Nam Dinh"
+		},
+		"student_list": [
+			{
+				"fullname": "Tran Van A",
+				"age": 19,
+				"address": "Ha Noi"
+			},
+			{
+				"fullname": "Tran Van A",
+				"age": 19,
+				"address": "Ha Noi"
+			}
+		]
+	},
+	{
+		"classname": "T1907E",
+		"address": "8 Ton That Thuyet, Cau Giay, HN",
+		"teacher": {
+			"fullname": "Tran Van B",
+			"age": 32,
+			"address": "Nam Dinh"
+		},
+		"student_list": [
+			{
+				"fullname": "Tran Van B",
+				"age": 19,
+				"address": "Ha Noi"
+			},
+			{
+				"fullname": "Tran Van B",
+				"age": 19,
+				"address": "Ha Noi"
+			}
+		]
+	}
+]

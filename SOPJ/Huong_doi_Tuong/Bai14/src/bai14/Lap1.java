@@ -3,12 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Bai13_2_1;
+package bai14;
+
+import java.io.File;
 
 /**
  *
  * @author phuon
  */
-public interface Comparator {
+public class Lap1 {
+
+    /**
+     * @param args the command line arguments
+     */
+    
     
 }
