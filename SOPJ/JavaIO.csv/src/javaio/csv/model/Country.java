@@ -5,14 +5,22 @@
  */
 package javaio.csv.model;
 
+import com.opencsv.bean.CsvBindByPosition;
+
 /**
  *
  * @author phuon
  */
 public class Country {
+    @CsvBindByPosition(position =0)
     private String country;
+    @CsvBindByPosition(position =1)
     private double longitude;//Kinh độ
+    
+    @CsvBindByPosition(position =2)
     private double latitude; // vĩ độ
+    
+    @CsvBindByPosition(position =3)
     private String name;
 
     public Country() {
@@ -55,6 +63,11 @@ public class Country {
 
     public void setLatitude(double latitude) {
         this.latitude = latitude;
+    }
+
+    @Override
+    public String toString() {
+        return "Country{" + "country=" + country + ", longitude=" + longitude + ", latitude=" + latitude + ", name=" + name + '}';
     }
     
     
