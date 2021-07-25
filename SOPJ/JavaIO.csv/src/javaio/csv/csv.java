@@ -69,6 +69,7 @@ public class csv {
 //                }
 //            }
 //        }
+
 //        Dùng OpenCSV
 //        FileReader fr = null;
 //        try {
@@ -100,36 +101,36 @@ public class csv {
 //            
 //}\
 //ghi 
-        FileWriter fw = null;
-        try {
-            fw = new FileWriter(PATH_FILE_CSV);
-            CSVWriter csvWrite = new CSVWriter(fw, CSVWriter.DEFAULT_SEPARATOR, CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.DEFAULT_ESCAPE_CHARACTER, CSVWriter.DEFAULT_LINE_END);
-            String[] header = {"country", "latitude", "Longitude", "Name"};
-            csvWrite.writeNext(header);
-
-//            csvWrite.writeNext(new String[]{"aa", "-111", "111", "AAAAA"});
-            List<Country> list = new ArrayList<>();
-            list.add(new Country("aa", 123.11, 11.11, "Aaaaaa"));
-            list.add(new Country("bb", 123.11, 11.11, "bbbbbbbbbb"));
-            list.add(new Country("bbb", 1124.11, 33412.11, "bbbbb"));
-            list.add(new Country("bccc", 4444.11, 2223.11, "ccccc"));
-            list.add(new Country("ssss", 44422.11, 666.11, "eeee"));
-
-            for (Country item : list) {
-                csvWrite.writeNext(new String[]{item.getCountry(), String.valueOf(item.getLatitude()), String.valueOf(item.getLongitude()), item.getName()});
-            }
-
-        } catch (IOException ex) {
-            Logger.getLogger(csv.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            if (fw != null) {
-                try {
-                    fw.close();
-                } catch (IOException ex) {
-                    Logger.getLogger(csv.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
+//        FileWriter fw = null;
+//        try {
+//            fw = new FileWriter(PATH_FILE_CSV);
+//            CSVWriter csvWrite = new CSVWriter(fw, CSVWriter.DEFAULT_SEPARATOR, CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.DEFAULT_ESCAPE_CHARACTER, CSVWriter.DEFAULT_LINE_END);
+//            String[] header = {"country", "latitude", "Longitude", "Name"};
+//            csvWrite.writeNext(header);
+//
+////            csvWrite.writeNext(new String[]{"aa", "-111", "111", "AAAAA"});
+//            List<Country> list = new ArrayList<>();
+//            list.add(new Country("tttttttt", 12.22, 11.22, "aaaaaa"));
+//            list.add(new Country("bb", 123.11, 11.11, "bbbbbbbbbb"));
+//            list.add(new Country("bbb", 1124.11, 33412.11, "bbbbb"));
+//            list.add(new Country("bccc", 4444.11, 2223.11, "ccccc"));
+//            list.add(new Country("ssss", 44422.11, 666.11, "eeee"));
+//
+//            for (Country item : list) {
+//                csvWrite.writeNext(new String[]{item.getCountry(), String.valueOf(item.getLatitude()), String.valueOf(item.getLongitude()), item.getName()});
+//            }
+//
+//        } catch (IOException ex) {
+//            Logger.getLogger(csv.class.getName()).log(Level.SEVERE, null, ex);
+//        } finally {
+//            if (fw != null) {
+//                try {
+//                    fw.close();
+//                } catch (IOException ex) {
+//                    Logger.getLogger(csv.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            }
+//        }
 
     }
 }
