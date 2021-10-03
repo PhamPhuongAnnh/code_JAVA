@@ -40,7 +40,8 @@ public class TADEC008 {
             case 8:
                 System.out.println("Thu Hai");
                 break;
-
+            default:
+                System.out.println("Mời nhập lai");
         }
     }
 }

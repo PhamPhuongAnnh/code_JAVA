@@ -5,15 +5,13 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+        SinhVien sv = new SinhVien();
         Scanner sc = new Scanner(System.in);
-
-        for (int i = 0; i < 10; i++) {
-            if (i == 2) {
-               break;
-            }
-            System.out.println(i);
-        }
-
+//        sv.nhapThongTin();
+        sv.Lop = sc.nextLine();
+        sv.xuatTHongTIn();
+        sv.xepLoai();
+        System.out.println("Xep Loai: " + sv.XepLoai());
     }
 
 }

@@ -18,10 +18,11 @@ public class TADEC003 {
 
         double a = sc.nextDouble();
         double b = sc.nextDouble();
-        
+
         if(a > 0 && b > 0 || a<0 &&b<0){
             System.out.println("Cung dau");
         }
+        
         else{
             System.out.println("Trai dau");
         }

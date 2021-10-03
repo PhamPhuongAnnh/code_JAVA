@@ -11,6 +11,7 @@ import java.util.Scanner;
  *
  * @author phuon
  */
+
 public class TADEC001 {
 
     public static void main(String[] args) {
@@ -18,7 +19,7 @@ public class TADEC001 {
 
         int a = sc.nextInt();
 
-        if (a % 2 != 0) {
+        if (a % 2 != 0) {  
             System.out.println(a + " la so le");
         } else {
             System.out.println(a + " la so chan");

@@ -11,37 +11,23 @@ import java.util.Scanner;
  *
  * @author phuon
  */
-public class TADEC007 {
-    
-
-
-
+public class TADEC012 {
+//ax + by = e
+//cx + dy = f 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
         double a = sc.nextDouble();
         double b = sc.nextDouble();
+        double e = sc.nextDouble();
+
         double c = sc.nextDouble();
+        double d = sc.nextDouble();
+        double f = sc.nextDouble();
 
-        if (a > b) {
-            double tg = a;
-            a = b;
-            b = tg;
-
+        if(a*d - c*b != 0){
+            System.out.println("He phuong trinh co nghiem duy nhat");
+            System.out.println("x = ");
         }
-
-        if (a > c) {
-            double tg = a;
-            a = c;
-            c = tg;
-        }
-
-        if (b > c) {
-            double tg = b;
-            b = c;
-            c = tg;
-        }
-
-        System.out.printf("%.2f --> %.2f --> %.2f", a, b, c);
     }
 }
