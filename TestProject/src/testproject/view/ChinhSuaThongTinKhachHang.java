@@ -49,8 +49,9 @@ public class ChinhSuaThongTinKhachHang extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
+        btn_boQua = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel2.setBackground(new java.awt.Color(190, 220, 227));
 
@@ -129,6 +130,14 @@ public class ChinhSuaThongTinKhachHang extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton1.setText("Lưu");
 
+        btn_boQua.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btn_boQua.setText("Bỏ qua");
+        btn_boQua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_boQuaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -156,6 +165,8 @@ public class ChinhSuaThongTinKhachHang extends javax.swing.JFrame {
                 .addContainerGap(144, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_boQua, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addGap(40, 40, 40))
         );
@@ -189,7 +200,9 @@ public class ChinhSuaThongTinKhachHang extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(btn_boQua))
                 .addContainerGap())
         );
 
@@ -215,6 +228,11 @@ public class ChinhSuaThongTinKhachHang extends javax.swing.JFrame {
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField5ActionPerformed
+
+    private void btn_boQuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_boQuaActionPerformed
+        this.setVisible(false);
+        NhapThongTinKhachHang.main();
+    }//GEN-LAST:event_btn_boQuaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -252,6 +270,7 @@ public class ChinhSuaThongTinKhachHang extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_boQua;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
