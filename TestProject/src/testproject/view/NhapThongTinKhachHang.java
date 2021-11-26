@@ -17,6 +17,8 @@ public class NhapThongTinKhachHang extends javax.swing.JFrame {
     public NhapThongTinKhachHang() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setTitle("Nhập thông tin khách hàng");
+
     }
 
     /**
@@ -55,7 +57,7 @@ public class NhapThongTinKhachHang extends javax.swing.JFrame {
 
         jButton5.setText("jButton5");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel2.setBackground(new java.awt.Color(190, 220, 227));
 

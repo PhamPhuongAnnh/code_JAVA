@@ -44,9 +44,10 @@ public class ChinhSuaDatPhong extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jButton1 = new javax.swing.JButton();
+        btn_luu = new javax.swing.JButton();
+        btn_boQua = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel2.setBackground(new java.awt.Color(190, 220, 227));
 
@@ -107,8 +108,21 @@ public class ChinhSuaDatPhong extends javax.swing.JFrame {
         jDateChooser2.setDate(new java.util.Date(1637374534000L));
         jDateChooser2.setDateFormatString("yyyy/MM/dd");
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton1.setText("Lưu");
+        btn_luu.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btn_luu.setText("Lưu");
+        btn_luu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_luuActionPerformed(evt);
+            }
+        });
+
+        btn_boQua.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btn_boQua.setText("Bỏ qua");
+        btn_boQua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_boQuaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -118,7 +132,10 @@ public class ChinhSuaDatPhong extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(82, 82, 82)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btn_boQua, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_luu))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -172,7 +189,9 @@ public class ChinhSuaDatPhong extends javax.swing.JFrame {
                         .addGap(34, 34, 34)
                         .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_luu)
+                    .addComponent(btn_boQua))
                 .addGap(32, 32, 32))
         );
 
@@ -190,6 +209,15 @@ public class ChinhSuaDatPhong extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void btn_luuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_luuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_luuActionPerformed
+
+    private void btn_boQuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_boQuaActionPerformed
+       this.setVisible(false);
+       DatPhong.main();
+    }//GEN-LAST:event_btn_boQuaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -227,7 +255,8 @@ public class ChinhSuaDatPhong extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btn_boQua;
+    private javax.swing.JButton btn_luu;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
