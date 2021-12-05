@@ -72,7 +72,4 @@ public class MaTran {
             System.out.println("");
         }
     }
-
-    
-
 }
