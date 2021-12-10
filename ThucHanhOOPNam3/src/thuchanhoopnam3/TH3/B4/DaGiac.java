@@ -42,6 +42,7 @@ public class DaGiac {
         System.out.println("Nhập số lượng cạnh: ");
         Scanner sc = new Scanner(System.in);
         soCanh = sc.nextInt();
+        a = new float[soCanh];
         System.out.println("Nhập thông số cạnh: ");
         for(int i=0; i<soCanh; i++){
             a[i] = sc.nextFloat();

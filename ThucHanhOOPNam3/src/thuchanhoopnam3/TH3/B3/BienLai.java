@@ -11,6 +11,7 @@ import java.util.Scanner;
  * @author phuon
  */
 public class BienLai {
+
     private KhachHang kh;
     private int chiSoCu;
     private int chiSoMoi;
@@ -50,10 +51,10 @@ public class BienLai {
 
     @Override
     public String toString() {
-        return "BienLai{" + "kh=" + kh + ", chiSoCu=" + chiSoCu + ", chiSoMoi=" + chiSoMoi + " SoTien: "+tinhTien()+ '}' ;
+        return "BienLai{" + "kh=" + kh + ", chiSoCu=" + chiSoCu + ", chiSoMoi=" + chiSoMoi + " SoTien: " + tinhTien() + '}';
     }
-    
-    public void nhap(){
+
+    public void nhap() {
         System.out.println("Nhập thông tin khách hàng: ");
         kh = new KhachHang();
         kh.nhap();
@@ -63,8 +64,18 @@ public class BienLai {
         System.out.println("Nhập chỉ số mới: ");
         chiSoMoi = sc.nextInt();
     }
-    
-    public int tinhTien(){
-        return (chiSoMoi - chiSoCu)*85000;
+
+    public int tinhTien() {
+        int chiSoCongTo = chiSoMoi - chiSoCu;
+        int tongTien = 0;
+        if (chiSoCongTo > 0 && chiSoCongTo <= 50) {
+            tongTien =  chiSoCongTo * 2500;
+        } else if (chiSoCongTo <= 100) {
+            tongTien =  50 * 2500 + (chiSoCongTo - 50) * 3000;
+        } else {
+            tongTien =  50 * 2500 + 50 * 3000 + (chiSoCongTo - 100) * 3500;
+        }
+        return tongTien;
     }
 }
+       

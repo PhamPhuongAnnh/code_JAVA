@@ -12,9 +12,13 @@ package thuchanhoopnam3.TH3.B4;
 public class main {
     
     public static void main(String[] args) {
+//        DaGiac dagiac = new DaGiac();
+//        dagiac.nhap();
+//        dagiac.hienThi();
+//        System.out.println("\nChu vi đa giác vừa nhập là: "+dagiac.chuVi());
         DaGiac tamGiac = new TamGiac();
         tamGiac.nhap();
         tamGiac.hienThi();
-        System.out.println("\nChu Vi: "+tamGiac.chuVi());
+        System.out.println("\nChu Vi tam giác: "+tamGiac.chuVi());
     }
 }
