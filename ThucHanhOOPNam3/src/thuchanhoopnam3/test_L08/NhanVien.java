@@ -11,11 +11,12 @@ import java.util.Scanner;
  * @author phuon
  */
 public class NhanVien {
-    private String maNV; 
-    private String hoTen; 
+
+    private String maNV;
+    private String hoTen;
     private double luong;
-    private  double thuNhap;
-    
+    private double thuNhap;
+
     public NhanVien() {
     }
 
@@ -48,8 +49,8 @@ public class NhanVien {
     public void setHoTen(String hoTen) {
         this.hoTen = hoTen;
     }
-    
-    public void nhapTT(){
+
+    public void nhapTT() {
         System.out.println("Mã nhân viên: ");
         Scanner sc = new Scanner(System.in);
         maNV = sc.nextLine();
@@ -58,13 +59,24 @@ public class NhanVien {
         System.out.println("Lương: ");
         luong = sc.nextDouble();
     }
-    
-    public void xuatTT(){
+
+    public void xuatTT() {
         System.out.println("------------------------------------");
-        System.out.println("Mã nhân viên: "+maNV);
-        System.out.println("Họ tên: "+hoTen);
-        System.out.println("Lương: "+luong);
-        
+        System.out.println("Mã nhân viên: " + maNV);
+        System.out.println("Họ tên: " + hoTen);
+        System.out.println("Lương: " + luong);
+
+    }
+
+    public double thuNhap() {
+        double  thu = this.getLuong();
+        if (thu <= 15 && thu > 9) {
+            thu = thu - thu * 0.1;
+        }
+        if (thu > 15) {
+            thu = thu - thu * 0.12;
+        }
+        return thu;
     }
 
     public double getThuNhap() {

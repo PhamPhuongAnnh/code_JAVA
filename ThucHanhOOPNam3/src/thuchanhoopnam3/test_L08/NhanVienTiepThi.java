@@ -60,5 +60,20 @@ public class NhanVienTiepThi extends NhanVien {
         super.xuatTT();
         System.out.println("Doanh số bán hàng: " + doanhSo);
         System.out.println("Tỉ lệ hoa hồng: " + tiLeHH);
+        System.out.println("Thu nhập: "+thuNhap());
+
+    }
+
+    @Override
+    public double thuNhap() {
+        double thu = this.getLuong() + this.getDoanhSo() * this.getTiLeHH();
+        if (thu <= 15 && thu > 9) {
+            thu = thu - thu * 0.1;
+        }
+        if (thu > 15) {
+            thu = thu - thu * 0.12;
+        }
+        this.setThuNhap(thu);
+        return thu;
     }
 }

@@ -60,19 +60,17 @@ public class QuanLyNhanVien {
             if (item instanceof NhanVienHanhChinh) {
                 NhanVienHanhChinh nv = (NhanVienHanhChinh) item;
                 nv.xuatTT();
-                System.out.println("Thu nhập: " + item.getThuNhap());
+
             }
             if (item instanceof NhanVienTiepThi) {
                 NhanVienTiepThi nv1 = (NhanVienTiepThi) item;
                 nv1.xuatTT();
 
-                System.out.println("Thu nhập: " + item.getThuNhap());
             }
             if (item instanceof TruongPhong) {
                 TruongPhong nv2 = (TruongPhong) item;
                 nv2.xuatTT();
 
-                System.out.println("Thu nhập: " + item.getThuNhap());
             }
         }
     }
@@ -85,19 +83,16 @@ public class QuanLyNhanVien {
                     NhanVienHanhChinh nv = (NhanVienHanhChinh) item;
                     nv.xuatTT();
 
-                    System.out.println("Thu nhập: " + item.getThuNhap());
                 }
                 if (item instanceof NhanVienTiepThi) {
                     NhanVienTiepThi nv1 = (NhanVienTiepThi) item;
                     nv1.xuatTT();
 
-                    System.out.println("Thu nhập: " + item.getThuNhap());
                 }
                 if (item instanceof TruongPhong) {
                     TruongPhong nv2 = (TruongPhong) item;
                     nv2.xuatTT();
 
-                    System.out.println("Thu nhập: " + item.getThuNhap());
                 }
                 flag = 1;
             }
@@ -115,19 +110,16 @@ public class QuanLyNhanVien {
                     NhanVienHanhChinh nv = (NhanVienHanhChinh) item;
                     nv.xuatTT();
 
-                    System.out.println("Thu nhập: " + item.getThuNhap());
                 }
                 if (item instanceof NhanVienTiepThi) {
                     NhanVienTiepThi nv1 = (NhanVienTiepThi) item;
                     nv1.xuatTT();
 
-                    System.out.println("Thu nhập: " + item.getThuNhap());
                 }
                 if (item instanceof TruongPhong) {
                     TruongPhong nv2 = (TruongPhong) item;
                     nv2.xuatTT();
 
-                    System.out.println("Thu nhập: " + item.getThuNhap());
                 }
             }
             flag = 1;
@@ -327,29 +319,21 @@ public class QuanLyNhanVien {
     }
 
     public void Y9() {
-        int i = 0;
-        while (i < 5) {
-            for (NhanVien item : listNV) {
-                if (item instanceof NhanVienHanhChinh) {
-                    NhanVienHanhChinh nv = (NhanVienHanhChinh) item;
-                    nv.xuatTT();
 
-                    System.out.println("Thu nhập: " + item.getThuNhap());
-                }
-                if (item instanceof NhanVienTiepThi) {
-                    NhanVienTiepThi nv1 = (NhanVienTiepThi) item;
-                    nv1.xuatTT();
-
-                    System.out.println("Thu nhập: " + item.getThuNhap());
-                }
-                if (item instanceof TruongPhong) {
-                    TruongPhong nv2 = (TruongPhong) item;
-                    nv2.xuatTT();
-
-                    System.out.println("Thu nhập: " + item.getThuNhap());
-                }
+        for (int i = 0; i < listNV.size(); i++) {
+            if (listNV.get(i) instanceof NhanVienHanhChinh) {
+                NhanVienHanhChinh nv = (NhanVienHanhChinh) listNV.get(i);
+                nv.xuatTT();
             }
-            i++;
+            if (listNV.get(i) instanceof NhanVienTiepThi) {
+                NhanVienTiepThi nv1 = (NhanVienTiepThi) listNV.get(i);
+                nv1.xuatTT();
+
+            }
+            if (listNV.get(i) instanceof TruongPhong) {
+                TruongPhong nv2 = (TruongPhong) listNV.get(i);
+                nv2.xuatTT();
+            }
         }
 
     }
