@@ -19,7 +19,10 @@ import java.util.logging.Logger;
 public class Bao extends TaiLieu {
 
     private Date ngayPH;
+    String ngay1;
+
     DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+
     public Bao() {
     }
 
@@ -47,18 +50,19 @@ public class Bao extends TaiLieu {
         System.out.println("Ngày xuất bản: ");
         Scanner sc = new Scanner(System.in);
         String ngay = sc.nextLine(); // nhập ngày theo dạng dd/mm/yyyy
-        ngayPH = new Date();
         try {
             ngayPH = df.parse(ngay);
+            ngay1 = df.format(ngayPH);
         } catch (ParseException ex) {
             Logger.getLogger(Bao.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }
 
     @Override
     public String toString() {
         String s = super.toString();
-        return "Bao"+s + ", ngayPH=" + ngayPH + '}';
+        return "Bao" + s + ", ngayPH=" + ngay1 + '}';
     }
-    
+
 }
