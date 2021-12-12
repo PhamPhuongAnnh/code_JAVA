@@ -27,7 +27,7 @@ public class NhanVienRepo implements ISNhanVienRepo {
         Connection cnn;
         try {
             cnn = (Connection) connect.getMySQLConnection();
-            PreparedStatement pst = cnn.prepareStatement(sql);
+//            PreparedStatement pst = cnn.prepareStatement(sql);
         } catch (SQLException ex) {
             Logger.getLogger(NhanVienRepo.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
