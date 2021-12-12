@@ -2,8 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package thuchanhoopnam3.test_L08;
+package thuchanhoopnam3.test_L08.Controller;
 
+import thuchanhoopnam3.test_L08.Model.NhanVienHanhChinh;
+import thuchanhoopnam3.test_L08.Model.NhanVien;
+import thuchanhoopnam3.test_L08.Model.TruongPhong;
+import thuchanhoopnam3.test_L08.Model.NhanVienTiepThi;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -20,7 +24,6 @@ public class QuanLyNhanVien {
     private Scanner sc = new Scanner(System.in);
 
     public List<NhanVien> nhapDanhSachNhanVien() {
-
         while (true) {
             System.out.println("\t1. Nhân viên hành chính");
             System.out.println("\t2. Nhân viên tiếp thị");
@@ -46,6 +49,9 @@ public class QuanLyNhanVien {
                     nv2.nhapTT();
                     listNV.add(nv2);
                     break;
+                default:
+                    System.out.println("Mời nhập lại");
+                    break;
             }
         }
         return listNV;
@@ -60,7 +66,6 @@ public class QuanLyNhanVien {
             if (item instanceof NhanVienHanhChinh) {
                 NhanVienHanhChinh nv = (NhanVienHanhChinh) item;
                 nv.xuatTT();
-
             }
             if (item instanceof NhanVienTiepThi) {
                 NhanVienTiepThi nv1 = (NhanVienTiepThi) item;
@@ -255,53 +260,8 @@ public class QuanLyNhanVien {
         });
     }
 
-    public void ThuNhap() {
-        double thu = 0;
-        for (NhanVien item : listNV) {
-            if (item instanceof NhanVienHanhChinh) {
-                thu = item.getLuong();
-                if (thu <= 15 && thu > 9) {
-                    thu = thu - thu * 0.1;
-                }
-                if (thu > 15) {
-                    thu = thu - thu * 0.12;
-                }
-                item.setThuNhap(thu);
-                System.out.println("a");
-            }
-            if (item instanceof NhanVienTiepThi) {
-                NhanVienTiepThi nv1 = (NhanVienTiepThi) item;
-                thu = nv1.getLuong() + nv1.getDoanhSo() * nv1.getTiLeHH();
-                if (thu <= 15 && thu > 9) {
-                    thu = thu - thu * 0.1;
-                }
-                if (thu > 15) {
-                    thu = thu - thu * 0.12;
-                }
-                nv1.setThuNhap(thu);
-            }
-            if (item instanceof TruongPhong) {
-                TruongPhong nv2 = (TruongPhong) item;
-                thu = nv2.getLuong() + nv2.getLuongTN();
-                if (thu <= 15 && thu > 9) {
-                    thu = thu - thu * 0.1;
-                }
-                if (thu > 15) {
-                    thu = thu - thu * 0.12;
-                }
-                nv2.setThuNhap(thu);
-            }
-        }
-    }
 
-    public void sapXepThuNhap() {
-        Collections.sort(listNV, new Comparator<NhanVien>() {
-            @Override
-            public int compare(NhanVien o1, NhanVien o2) {
-                return o1.getHoTen().compareTo(o2.getHoTen());
-            }
-        });
-    }
+
 
     public void sapXepLuong() {
         Collections.sort(listNV, new Comparator<NhanVien>() {

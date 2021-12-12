@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package thuchanhoopnam3.test_L08;
+package thuchanhoopnam3.test_L08.Model;
 
 import java.util.Scanner;
 
@@ -65,7 +65,7 @@ public class NhanVien {
         System.out.println("Mã nhân viên: " + maNV);
         System.out.println("Họ tên: " + hoTen);
         System.out.println("Lương: " + luong);
-
+        System.out.println("Thu nhập: "+thuNhap());
     }
 
     public double thuNhap() {
