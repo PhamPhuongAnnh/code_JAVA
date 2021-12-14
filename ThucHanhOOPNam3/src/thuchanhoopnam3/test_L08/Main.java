@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import thuchanhoopnam3.test_L08.JDBC_Connection.ConnectionUtils;
 
 /**
  *
@@ -90,15 +89,7 @@ public class Main {
 //
 //            }
 //        }
-        ConnectionUtils conn = new ConnectionUtils();
-     
-        try {
-            System.out.println(conn.getMySQLConnection());
-        } catch (SQLException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       
         
     }
 }
