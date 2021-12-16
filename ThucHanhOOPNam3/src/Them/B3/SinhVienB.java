@@ -21,10 +21,9 @@ public class SinhVienB extends SinhVien{
         super.nhap();
     }
 
+   
     @Override
     public String toString() {
-          
-        System.out.println(super.toString());
-        return "SinhVienB{" + khoi()+ '}';
+        return super.toString();
     }
 }

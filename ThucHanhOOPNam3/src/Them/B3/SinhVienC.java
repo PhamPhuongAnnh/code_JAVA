@@ -22,9 +22,9 @@ public class SinhVienC extends SinhVien {
         super.nhap();
     }
 
+    
     @Override
     public String toString() {
-        System.out.println(super.toString());
-        return "SinhVienC{" + khoi() + '}';
+        return super.toString();
     }
 }

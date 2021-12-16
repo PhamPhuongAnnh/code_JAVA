@@ -24,8 +24,6 @@ public class SinhVienA extends SinhVien {
 
     @Override
     public String toString() {
-
-        System.out.println(super.toString());
-        return "SinhVienA{" + khoi() + '}';
+        return super.toString();
     }
 }

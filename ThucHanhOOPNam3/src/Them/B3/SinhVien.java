@@ -61,7 +61,7 @@ public class SinhVien {
 
     @Override
     public String toString() {
-        return "SinhVien{" + "soBaoDanh=" + soBaoDanh + ", hoTen=" + hoTen + ", diaChi=" + diaChi + ", uuTien=" + uuTien + '}'  + khoi();
+        return "SinhVien{" + "soBaoDanh=" + soBaoDanh + ", hoTen=" + hoTen + ", diaChi=" + diaChi + ", uuTien=" + uuTien +"," + khoi()+'}' ;
     }
 
     public void nhap() {
