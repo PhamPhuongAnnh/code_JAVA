@@ -4,6 +4,7 @@
  */
 package Them.B4;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -11,7 +12,7 @@ import java.util.Scanner;
  *
  * @author phuon
  */
-public class Person {
+public class Person implements Serializable{
 
     private String hoTen;
     private String ngaySinh;

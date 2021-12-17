@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FilterInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -22,33 +23,15 @@ import java.util.logging.Logger;
  */
 public class Main {
 
-    private static List<NhanVien> listNV = new ArrayList<>();
+    public static List<Person> listNV = new ArrayList<>();
     public static Scanner sc = new Scanner(System.in);
 
-    public static void nhapFile() {
+    public static void wirteObject(String path, Object ob) {
         try {
-            // tạo đối tượng luồng và liên kết nguồn dữ liệu
-            FileOutputStream fos = new FileOutputStream("d:\\code\\Java_work\\code_JAVA\\ThucHanhOOPNam3\\src\\Them\\B4\\nhanvien.dat");
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            // nhập list nhân viên
-            while (true) {
-                NhanVien sv = new NhanVien();
-                sv.nhap();
-                listNV.add(sv);
-                System.out.println("\tNhập 0 để không nhập nữa");
-                int check1 = sc.nextInt();
-                if (check1 == 0) {
-                    break;
-                }
-            }
-            // ghi mảng đối tượng vào file
-            oos.writeObject(listNV);
-            // đóng luồng
-            fos.close();
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path));
+            oos.writeObject(ob);
             oos.close();
-            
-            
-            
+
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -57,36 +40,78 @@ public class Main {
 
     }
 
-    public static void docfile() {
-        FileInputStream fis;
+    public static Object readObject(String path) {
         try {
-            // tạo luồng
-            fis = new FileInputStream("d:\\code\\Java_work\\code_JAVA\\ThucHanhOOPNam3\\src\\Them\\B4\\nhanvien.dat");
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            // đọc dữ liệu 
-            listNV =  (List<NhanVien>) ois.readObject();
-            for(NhanVien item: listNV){
-                
-                    System.out.println(item.toString());
-                
-            }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path));
+            Object ob = ois.readObject();
+            ois.close();
+            return ob;
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return null;
+    }
 
+    public static void nhapFile() {
+
+        Person nv = new NhanVien();
+        nv.nhap();
+        listNV.add(nv);
+        while (true) {
+            System.out.println("1. Nhập tiếp\n0. Không nhập nữa");
+            int check = sc.nextInt();
+            if (check == 1) {
+                Person nv1 = new NhanVien();
+                nv1.nhap();
+                listNV.add(nv1);
+            } else {
+                break;
+            }
+        }
+        Main.wirteObject("d:\\\\code\\\\Java_work\\\\code_JAVA\\\\ThucHanhOOPNam3\\\\src\\\\Them\\\\B4\\\\nhanvien.dat", listNV);
+    }
+
+    public static List<Person> DocFile() {
+        List<Person> list2 = (List<Person>) Main.readObject("d:\\\\code\\\\Java_work\\\\code_JAVA\\\\ThucHanhOOPNam3\\\\src\\\\Them\\\\B4\\\\nhanvien.dat");
+        return list2;
+    }
+
+    public static void menu() {
+        System.out.println("1. Nhập dữ liệu từ bàn phím");
+        System.out.println("2. Đọc file");
+        System.out.println("3. Ghi file nhanvien.obj");
+        System.out.println("4. Copy nội dung sang file có đường dẫn nhập từ bàn phím");
+        System.out.println("0. thoát");
     }
 
     public static void main(String[] args) {
-           
-           nhapFile();
-           docfile();
+        while (true) {
+            menu();
+            int check = sc.nextInt();
+            switch (check) {
+                case 1:
+                    nhapFile();
+                    break;
+                case 2:
+                    listNV = DocFile();
+                    break;
+                case 3:
+                    for (Person item : listNV) {
+                        NhanVien nv2 = (NhanVien) item;
+                        System.out.println(nv2.toString());
+                    }
+                    Main.wirteObject("d:\\\\code\\\\Java_work\\\\code_JAVA\\\\ThucHanhOOPNam3\\\\src\\\\Them\\\\B4\\\\nhanvien.obj", listNV);
 
-//            Person s = new NhanVien();
-//            s.nhap();
-//            System.out.println(s.toString());
+                    break;
+                case 4:
+                    System.out.println("tên file muốn ghi: ");
+                    sc.nextLine();
+                    String Check3 = sc.nextLine();
+                    Main.wirteObject("d:\\\\code\\\\Java_work\\\\code_JAVA\\\\ThucHanhOOPNam3\\\\src\\\\Them\\\\B4\\\\" + Check3, listNV);
+                    return;
+            }
+        }
     }
 }
