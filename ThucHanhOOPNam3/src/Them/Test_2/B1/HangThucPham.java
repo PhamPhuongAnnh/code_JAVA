@@ -118,7 +118,7 @@ public class HangThucPham {
     }
 
     public boolean checkNgayHH() {
-        if (this.ngaySanXuat.after(this.ngaySanXuat)) {
+        if (this.ngayHetHan.after(this.ngaySanXuat)) {
             return true;
         }
         return false;
@@ -134,7 +134,7 @@ public class HangThucPham {
             return;
         } else {
             System.out.println("Tên hàng: ");
-           
+
             tenHang = sc.nextLine();
             if (checkTen() == false) {
                 this.setTenHang("xxx");
@@ -156,7 +156,19 @@ public class HangThucPham {
                     Logger.getLogger(HangThucPham.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-
+            while (checkNgaySX() == false) {
+                System.out.println("Ngày sản xuất phải trước ngày: " + df.format(date));
+                String ngay2 = sc.nextLine();
+                if (ngay1.equals("")) {
+                    ngaySanXuat = date;
+                } else {
+                    try {
+                        ngaySanXuat = df.parse(ngay2);
+                    } catch (ParseException ex) {
+                        Logger.getLogger(HangThucPham.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
             System.out.println("Ngày hết hạn: ");
             String ngay2 = sc.nextLine();
             if (ngay2.equals("")) {
@@ -166,6 +178,19 @@ public class HangThucPham {
                     ngayHetHan = df.parse(ngay2);
                 } catch (ParseException ex) {
                     Logger.getLogger(HangThucPham.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            while (checkNgayHH() == false) {
+                System.out.println("Ngày sản xuất phải trước ngày: " + df.format(date));
+                String ngay3 = sc.nextLine();
+                if (ngay1.equals("")) {
+                    ngaySanXuat = date;
+                } else {
+                    try {
+                        ngaySanXuat = df.parse(ngay3);
+                    } catch (ParseException ex) {
+                        Logger.getLogger(HangThucPham.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
             }
         }
