@@ -17,22 +17,22 @@ import java.util.logging.Logger;
  */
 public class HangThucPham {
 
-    private int maHang;
+    private String maHang;
     private String tenHang;
     private double donGia;
     private Date ngaySanXuat;
     private Date ngayHetHan;
     Date date = java.util.Calendar.getInstance().getTime();
-    
+
     SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 
     public HangThucPham() {
-        
+
     }
 
-    public HangThucPham(int maHang) {
+    public HangThucPham(String maHang) {
         this.maHang = maHang;
-        if(checkMa()==false){
+        if (checkMa() == false) {
             return;
         }
         this.tenHang = "xxx";
@@ -41,7 +41,7 @@ public class HangThucPham {
         this.ngayHetHan = ngaySanXuat;
     }
 
-    public HangThucPham(int maHang, String tenHang, double donGia, Date ngaySanXuat, Date ngayHetHan) {
+    public HangThucPham(String maHang, String tenHang, double donGia, Date ngaySanXuat, Date ngayHetHan) {
         this.maHang = maHang;
         this.tenHang = tenHang;
         this.donGia = donGia;
@@ -57,11 +57,11 @@ public class HangThucPham {
         this.ngayHetHan = ngayHetHan;
     }
 
-    public int getMaHang() {
+    public String getMaHang() {
         return maHang;
     }
 
-    public void setMaHang(int maHang) {
+    public void setMaHang(String maHang) {
         this.maHang = maHang;
     }
 
@@ -90,14 +90,14 @@ public class HangThucPham {
     }
 
     public boolean checkMa() {
-        if (String.valueOf(maHang).equals("")) {
+        if (maHang.equals("")) {
             return false;
         }
         return true;
     }
 
     public boolean checkTen() {
-        if (this.tenHang.equals(" ")) {
+        if (this.tenHang.equals("")) {
             return false;
         }
         return true;
@@ -118,59 +118,95 @@ public class HangThucPham {
     }
 
     public boolean checkNgayHH() {
-        if (this.ngaySanXuat.after(this.ngaySanXuat)) {
+        if (this.ngayHetHan.after(this.ngaySanXuat)) {
             return true;
         }
         return false;
     }
 
-        Scanner sc = new Scanner(System.in);
+    Scanner sc = new Scanner(System.in);
+
     public void nhap() {
         System.out.println("Mã: ");
-        maHang = sc.nextInt();
+        maHang = sc.nextLine();
         if (checkMa() == false) {
             System.out.println("Không được để trống. Tạo đối tượng không thành công");
             return;
+        } else {
+            System.out.println("Tên hàng: ");
+
+            tenHang = sc.nextLine();
+            if (checkTen() == false) {
+                this.setTenHang("xxx");
+            }
+            System.out.println("Đơn giá: ");
+            donGia = sc.nextDouble();
+            if (checkGia() == false) {
+                donGia = 0;
+            }
+            System.out.println("Ngày sản xuất: ");
+            sc.nextLine();
+            String ngay1 = sc.nextLine();
+            if (ngay1.equals("")) {
+                ngaySanXuat = date;
+            } else {
+                try {
+                    ngaySanXuat = df.parse(ngay1);
+                } catch (ParseException ex) {
+                    Logger.getLogger(HangThucPham.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            while (checkNgaySX() == false) {
+                System.out.println("Ngày sản xuất phải trước ngày: " + df.format(date));
+                String ngay2 = sc.nextLine();
+                if (ngay1.equals("")) {
+                    ngaySanXuat = date;
+                } else {
+                    try {
+                        ngaySanXuat = df.parse(ngay2);
+                    } catch (ParseException ex) {
+                        Logger.getLogger(HangThucPham.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+            System.out.println("Ngày hết hạn: ");
+            String ngay2 = sc.nextLine();
+            if (ngay2.equals("")) {
+                ngayHetHan = ngaySanXuat;
+            } else {
+                try {
+                    ngayHetHan = df.parse(ngay2);
+                } catch (ParseException ex) {
+                    Logger.getLogger(HangThucPham.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            while (checkNgayHH() == false) {
+                System.out.println("Ngày sản xuất phải trước ngày: " + df.format(date));
+                String ngay3 = sc.nextLine();
+                if (ngay1.equals("")) {
+                    ngaySanXuat = date;
+                } else {
+                    try {
+                        ngaySanXuat = df.parse(ngay3);
+                    } catch (ParseException ex) {
+                        Logger.getLogger(HangThucPham.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
         }
-        System.out.println("Tên hàng: ");
-        sc.nextLine();
-        tenHang = sc.nextLine();
-        if (checkTen() == false) {
-            tenHang = "xxx";
-        }
-        System.out.println("Đơn giá: ");
-        donGia = sc.nextDouble();
-        if (checkGia() == false) {
-            donGia = 0;
-        }
-        System.out.println("Ngày sản xuất: ");
-        sc.nextLine();
-        String ngay1 = sc.nextLine();
-        try {
-            ngaySanXuat = df.parse(ngay1);
-        } catch (ParseException ex) {
-            Logger.getLogger(HangThucPham.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        System.out.println("Ngày hết hạn: ");
-        String ngay2 = sc.nextLine();
-        try {
-            ngayHetHan = df.parse(ngay2);
-        } catch (ParseException ex) {
-            Logger.getLogger(HangThucPham.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
     }
 
     public void xuat() {
-
         String kiemTra = " ";
-        if(kiemTraHetHan()==false){
-            kiemTra = "Hang het han";
+        if (kiemTraHetHan() == false) {
+            kiemTra = "Hàng hết hạn";
         }
-        System.out.printf("%03d%20s%30s%30s%30s%30s\n", maHang,tenHang,donGia+" VND", df.format(ngaySanXuat),df.format(ngayHetHan),kiemTra);
+        System.out.printf("%03d%20s%30s%30s%30s%30s\n", Integer.parseInt(maHang), tenHang, donGia + " VND", df.format(ngaySanXuat), df.format(ngayHetHan), kiemTra);
     }
-    
-    public boolean kiemTraHetHan(){
-        if(ngayHetHan.before(date)==true){
+
+    public boolean kiemTraHetHan() {
+        if (ngayHetHan.before(date) == true) {
             return false;
         }
         return true;
