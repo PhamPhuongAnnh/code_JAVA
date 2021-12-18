@@ -4,13 +4,14 @@
  */
 package Them.B5;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 /**
  *
  * @author phuon
  */
-public class SinhVienHTTT extends SinhVien{
+public class SinhVienHTTT extends SinhVien implements Serializable{
     private double hocPhi;
 
     public SinhVienHTTT() {
@@ -42,7 +43,7 @@ public class SinhVienHTTT extends SinhVien{
 
     @Override
     public String toString() {
-        return ", hocPhi=" + hocPhi + '}';
+        return super.toString()+ ", hocPhi=" + hocPhi + '}';
     }
     
 }

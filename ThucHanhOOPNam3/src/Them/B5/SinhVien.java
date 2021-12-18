@@ -4,13 +4,14 @@
  */
 package Them.B5;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 /**
  *
  * @author phuon
  */
-public class SinhVien {
+public class SinhVien implements Serializable{
 
     private String maSV;
     private String hoTen;

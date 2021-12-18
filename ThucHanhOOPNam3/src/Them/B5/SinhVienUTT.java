@@ -4,13 +4,14 @@
  */
 package Them.B5;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 /**
  *
  * @author phuon
  */
-public class SinhVienUTT extends SinhVien{
+public class SinhVienUTT extends SinhVien implements Serializable{
     private String donVi;
     private double Luong; 
 
@@ -57,7 +58,7 @@ public class SinhVienUTT extends SinhVien{
 
     @Override
     public String toString() {
-        return ", donVi=" + donVi + ", Luong=" + Luong + '}';
+        return super.toString()+", donVi=" + donVi + ", Luong=" + Luong + '}';
     }
     
     
