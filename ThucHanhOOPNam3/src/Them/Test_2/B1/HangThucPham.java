@@ -156,14 +156,16 @@ public class HangThucPham {
                     Logger.getLogger(HangThucPham.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            while (checkNgaySX() == false) {
+            while (checkNgaySX() == false && !ngay1.equals("")) {
                 System.out.println("Ngày sản xuất phải trước ngày: " + df.format(date));
                 String ngay2 = sc.nextLine();
-                if (ngay1.equals("")) {
+                if (ngay2.equals("")) {
                     ngaySanXuat = date;
+                    break;
                 } else {
                     try {
                         ngaySanXuat = df.parse(ngay2);
+                        
                     } catch (ParseException ex) {
                         Logger.getLogger(HangThucPham.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -180,14 +182,15 @@ public class HangThucPham {
                     Logger.getLogger(HangThucPham.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            while (checkNgayHH() == false) {
-                System.out.println("Ngày sản xuất phải trước ngày: " + df.format(date));
+            while (checkNgayHH() == false && !ngay2.equals("")) {
+                System.out.println("Ngày hết hạn phải sau ngày: " + df.format(ngaySanXuat));
                 String ngay3 = sc.nextLine();
-                if (ngay1.equals("")) {
-                    ngaySanXuat = date;
+                if (ngay3.equals("")) {
+                    ngayHetHan = date;
+                    break;
                 } else {
                     try {
-                        ngaySanXuat = df.parse(ngay3);
+                        ngayHetHan = df.parse(ngay3);
                     } catch (ParseException ex) {
                         Logger.getLogger(HangThucPham.class.getName()).log(Level.SEVERE, null, ex);
                     }

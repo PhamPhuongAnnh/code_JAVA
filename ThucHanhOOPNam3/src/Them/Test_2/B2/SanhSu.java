@@ -67,7 +67,7 @@ public class SanhSu extends HangHoa {
 
     @Override
     public String toString() {
-        return ", nhaSX=" + nhaSX + ", ngayNhapKho=" + df.format(ngayNhapKho) + danhGia()+ '}';
+        return super.toString()+ ", nhaSX=" + nhaSX + ", ngayNhapKho=" + df.format(ngayNhapKho)  +" "+ danhGia()+ '}';
     }
 
     @Override
