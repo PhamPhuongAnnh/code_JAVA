@@ -97,7 +97,7 @@ public abstract  class HangHoa {
 
     @Override
     public String toString() {
-        return "{maHang=" + maHang + ", tenHang=" + tenHang + ", soLuongTon=" + soLuongTon + ", donGia=" + donGia + ", sc=" + sc;
+        return "{maHang=" + maHang + ", tenHang=" + tenHang + ", soLuongTon=" + soLuongTon + ", donGia=" + donGia ;
     }
 
     public Scanner getSc() {

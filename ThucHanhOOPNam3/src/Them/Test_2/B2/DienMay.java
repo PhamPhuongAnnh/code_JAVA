@@ -75,7 +75,7 @@ public class DienMay extends HangHoa {
 
     @Override
     public String toString() {
-        return super.toString() + ", thoiGianBH=" + thoiGianBH + ", congSuat=" + congSuat + ", sc=" + sc + danhGia()+ '}';
+        return super.toString() + ", thoiGianBH=" + thoiGianBH + ", congSuat=" + congSuat +" " + danhGia()+ '}';
     }
 
     @Override

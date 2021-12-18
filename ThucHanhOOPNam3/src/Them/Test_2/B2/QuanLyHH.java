@@ -105,52 +105,52 @@ public class QuanLyHH {
 
         }
     }
-    
-    public void timKiem(String ma){
-         for (HangHoa item : listHangHoa) {
-             if(ma.equals(item.getMaHang())){
-                 if (item instanceof ThucPham) {
-                     ThucPham a = (ThucPham) item;
-                     System.out.println(a.toString());
-                 }
-                 if (item instanceof SanhSu) {
-                     SanhSu a = (SanhSu) item;
-                     System.out.println(a.toString());
-                 }
-                 if (item instanceof DienMay) {
-                     DienMay a = (DienMay) item;
-                     System.out.println(a.toString());
-                 }
-             }
+
+    public void timKiem(String ma) {
+        for (HangHoa item : listHangHoa) {
+            if (ma.equals(item.getMaHang())) {
+                if (item instanceof ThucPham) {
+                    ThucPham a = (ThucPham) item;
+                    System.out.println(a.toString());
+                }
+                if (item instanceof SanhSu) {
+                    SanhSu a = (SanhSu) item;
+                    System.out.println(a.toString());
+                }
+                if (item instanceof DienMay) {
+                    DienMay a = (DienMay) item;
+                    System.out.println(a.toString());
+                }
+            }
         }
     }
-    
-    public void sapXepTen(){
-        Collections.sort(listHangHoa, new Comparator<HangHoa>(){
+
+    public void sapXepTen() {
+        Collections.sort(listHangHoa, new Comparator<HangHoa>() {
             @Override
             public int compare(HangHoa o1, HangHoa o2) {
                 return o1.getTenHang().compareTo(o2.getTenHang());
             }
         });
     }
-    
-    public void sapXepSL(){
-        Collections.sort(listHangHoa, new Comparator<HangHoa>(){
+
+    public void sapXepSL() {
+        Collections.sort(listHangHoa, new Comparator<HangHoa>() {
             @Override
             public int compare(HangHoa o1, HangHoa o2) {
-                return o2.getSoLuongTon()-o1.getSoLuongTon();
+                return o2.getSoLuongTon() - o1.getSoLuongTon();
             }
         });
     }
-    
-    public void xuatKhoBan(){
+
+    public void xuatKhoBan() {
         for (HangHoa item : listHangHoa) {
-                 if (item instanceof ThucPham) {
-                     ThucPham a = (ThucPham) item;
-                     if(a.danhGia().equals("Khó bán")){
-                         System.out.println(a.toString());
-                     }
-                 }
+            if (item instanceof ThucPham) {
+                ThucPham a = (ThucPham) item;
+                if (a.danhGia().equals("Khó bán")) {
+                    System.out.println(a.toString());
+                }
+            }
         }
     }
 }
