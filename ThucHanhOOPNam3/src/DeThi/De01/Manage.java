@@ -7,6 +7,8 @@ package DeThi.De01;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
@@ -142,13 +144,13 @@ public class Manage {
                 break;
             }
         }
-        for(Product item : listProduct){
+        for (Product item : listProduct) {
             if (item.getIdSP().equals(id)) {
                 flag2 = 1;
                 break;
             }
         }
-        if(flag2 == 0){
+        if (flag2 == 0) {
             System.out.println("No product found");
         }
         double money = 0;
@@ -167,16 +169,15 @@ public class Manage {
         } else {
             System.out.println("No customers found");
         }
-        
-        
+
         return money;
 
     }
-    
-    public  void ouputCust(){
+
+    public void ouputCust() {
         double max = 0;
         for (Customer item : listCustomer) {
-            if (item.getMoney()>max) {
+            if (item.getMoney() > max) {
                 max = item.getMoney();
                 break;
             }
@@ -188,4 +189,50 @@ public class Manage {
             }
         }
     }
+
+    // đề 01
+    public void editCustomer(String id) {
+        for (Customer item : listCustomer) {
+            if (item.getIdKH().equals(id)) {
+                while (true) {
+                    System.out.println("What information do you want to edit: ");
+                    System.out.println("1. Name");
+                    System.out.println("2. Birth year");
+                    System.out.println("0. I dont' want");
+                    int check = sc.nextInt();
+                    if (check == 1) {
+                        System.out.println("Name: ");
+                        sc.nextLine();
+                        item.setNameKH(sc.nextLine());
+                    } else if (check == 2) {
+                        System.out.println("Birth year: ");
+                        item.setBirthYear(sc.nextInt());
+                    } else if (check == 0) {
+                        break;
+                    } else {
+                        System.out.println("Please re_enter");
+                    }
+                }
+            }
+        }
+    }
+
+    public void sort() {
+        Collections.sort(listCustomer, new Comparator<Customer>() {
+            @Override
+            public int compare(Customer o1, Customer o2) {
+                if (o1.getMoney() > o2.getMoney()) {
+                    return 1;
+                } else if (o1.getMoney() == o2.getMoney()) {
+                    return 0;
+                } else {
+                    return -1;
+                }
+            }
+        });
+        for (Customer item : listCustomer) {
+            System.out.println(item.toString());
+        }
+    }
+
 }

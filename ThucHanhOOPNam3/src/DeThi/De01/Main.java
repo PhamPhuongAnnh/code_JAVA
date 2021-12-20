@@ -20,6 +20,8 @@ public class Main {
         System.out.println("4. Hiển thị danh sách sản phẩm ");
         System.out.println("5. Mua hàng");
         System.out.println("6. Khách hàng có tổng số tiền đã mua lớn nhất");
+        System.out.println("7. Thay đổi thông tin khách hàng");
+        System.out.println("8. sắp xếp theo thứ tự tăng dần của số tìn mà khách hàng đã mua và hiển thị");
         System.out.println("0. Thoát");
         System.out.println("_________________________________________________________");
     }
@@ -52,7 +54,7 @@ public class Main {
                     String idCheck = sc.nextLine();
                     double money = 0;
                     System.out.println("Enter id prodouct: ");
-                  
+
                     String idcheck2 = sc.nextLine();
                     System.out.println("Enter the quantity you want to buy");
                     int sl = sc.nextInt();
@@ -84,6 +86,15 @@ public class Main {
                     break;
                 case 0:
                     return;
+                case 7:
+                    System.out.println("Enter id Customer: ");
+                    sc.nextLine();
+                    String ma = sc.nextLine();
+                    ql.editCustomer(ma);
+                    break;
+                case 8:
+                    ql.sort();
+                    break;
                 default:
                     System.out.println("Please re_enter");
             }
