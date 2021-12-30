@@ -27,12 +27,13 @@ public class ConnectionMySQL {
 		String username = "root";
 		String password = "Hoanganh2112";
 
-		Connection con = DriverManager.getConnection(url, username, password);
-		if (con != null) {
-			System.out.println("Database Connected successfully");
-		} else {
-			System.out.println("Database Connection failed");
-		}
+		Connection con = null;
+        try {
+            con = (Connection) DriverManager.getConnection(url, username, password);
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionMySQL.class.getName()).log(Level.SEVERE, null, ex);
+        }
+		
 
         return con;
     }
