@@ -23,19 +23,19 @@ public class HoaDonform extends javax.swing.JFrame {
         initComponents();
          setLocationRelativeTo(null);
         File file = new File("hoadon.dat");
-        if (!file.exists()) {
-            HoaDon listHD = f.readObject("hoadon.dat");
-            dtm = (DefaultTableModel) tblHH.getModel();
-            soHoaDon.setText(listHD.getSoHoaDon());
-            ngayHoaDon.setText(listHD.getNgayHoaDon());
-        }
-        File file = new File("hangHoa.dat");
-        if (!file.exists()) {
-            list<ThongTinHangHoa> listHangHoa = f.readObject("hangHoa.dat");
-            for (ThongTinHangHoa item : listHangHoa) {
-                dtm.addRow(new Object[]{item.getTenHang(), item.getDonVi(), item.getDonGia(), item.getSoluong(), item.thanhTien()});
-            }
-        }
+//        if (!file.exists()) {
+//            HoaDon listHD = f.readObject("hoadon.dat");
+//            dtm = (DefaultTableModel) tblHH.getModel();
+//            soHoaDon.setText(listHD.getSoHoaDon());
+//            ngayHoaDon.setText(listHD.getNgayHoaDon());
+//        }
+//        File file = new File("hangHoa.dat");
+//        if (!file.exists()) {
+//            list<ThongTinHangHoa> listHangHoa = f.readObject("hangHoa.dat");
+//            for (ThongTinHangHoa item : listHangHoa) {
+//                dtm.addRow(new Object[]{item.getTenHang(), item.getDonVi(), item.getDonGia(), item.getSoluong(), item.thanhTien()});
+//            }
+//        }
 
        
 

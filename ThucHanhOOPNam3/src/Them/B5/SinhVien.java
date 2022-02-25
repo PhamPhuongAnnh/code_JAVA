@@ -87,11 +87,12 @@ public class SinhVien implements Serializable{
         diemTB = sc.nextDouble();
 
     }
-
+ 
     @Override
     public String toString() {
         return "{maSV=" + maSV + ", hoTen=" + hoTen + ", ngaySinh=" + ngaySinh + ", gioiTinh=" + gioiTinh + ", diemTB=" + diemTB ;
     }
+    
     
     
 }
