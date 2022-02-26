@@ -72,6 +72,7 @@ public class FormGiangVien extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -108,10 +109,12 @@ public class FormGiangVien extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setText("Giới Tính: ");
 
+        buttonGroup1.add(gtNam);
         gtNam.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         gtNam.setText("Nam");
         gtNam.setBorderPainted(true);
 
+        buttonGroup1.add(gtNu);
         gtNu.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         gtNu.setText("Nữ ");
         gtNu.setBorderPainted(true);
@@ -231,14 +234,13 @@ public class FormGiangVien extends javax.swing.JFrame {
         String hoTen = txtHoTen.getText(); 
         String ma = txtMa.getText();
         String diaChi = txtDiaCho.getText(); 
-        String gioiTinh;
+        String gioiTinh = null;
+        
         if(gtNam.isSelected()){
             gioiTinh ="Nam"; 
-            gtNu.setVisible(false);
         }
-        else{
+        if(gtNu.isSelected()){
             gioiTinh = "Nu";
-            gtNam.setVisible(false);
         }
         String khoa = jboxKhoa.getSelectedItem().toString(); 
         GiangVien gv = new GiangVien(hoTen, ma, diaChi, gioiTinh, khoa); 
@@ -297,6 +299,7 @@ public class FormGiangVien extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnluu;
     private javax.swing.JButton btnreset;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JRadioButton gtNam;
     private javax.swing.JRadioButton gtNu;
     private javax.swing.JLabel jLabel1;
