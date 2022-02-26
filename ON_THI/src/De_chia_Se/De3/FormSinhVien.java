@@ -9,6 +9,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -21,19 +23,45 @@ public class FormSinhVien extends javax.swing.JFrame {
      */
     List<SinhVien> list = new ArrayList<>();
 
-    public static void ghifile(String path, List<SinhVien> listNV) throws IOException {
+    public static void ghifileSVATTT(String path, List<SinhVien> listNV) throws IOException {
         File f = new File(path);
         FileWriter fw = new FileWriter(f);
         for (SinhVien item : listNV) {
             if (item instanceof SinhVienATTT) {
-                SinhVienATTT nv = (SinhVienATTT) item;
-                fw.append(nv.getHoten() + "$" + nv.getNgaySinh() + "$" + nv.getDiachi() + "$" + nv.getGioiTinh() + "$" + nv.getPhongBan() + "$" + nv.getHeSoLuong()
-                        + "$" + nv.getThamNien() + "$" + nv.getLuongCoBan());
+                SinhVienATTT svattt = (SinhVienATTT) item;
+                fw.append(svattt.getMaSV() + " " + svattt.getHoTen() + " " + svattt.getNgaySinh() + " " + svattt.getGioiTinh() + " " + svattt.getDiemTB() + " " + svattt.getHocPhi());
                 fw.append("\n");
             }
-
+            if (item instanceof SinhVienMatMa) {
+                SinhVienMatMa svmm = (SinhVienMatMa) item;
+                fw.append(svmm.getMaSV() + " " + svmm.getHoTen() + " " + svmm.getNgaySinh() + " " + svmm.getGioiTinh() + " " + svmm.getDiemTB() + " " + svmm.getDonVi() + " " + svmm.getLuong());
+                fw.append("\n");
+            }
         }
         fw.close();
+    }
+
+    public static void ghifileSVMM(String path, List<SinhVien> listNV) throws IOException {
+        File f = new File(path);
+        FileWriter fw = new FileWriter(f);
+        for (SinhVien item : listNV) {
+
+            if (item instanceof SinhVienMatMa) {
+                SinhVienMatMa svmm = (SinhVienMatMa) item;
+                fw.append(svmm.getMaSV() + " " + svmm.getHoTen() + " " + svmm.getNgaySinh() + " " + svmm.getGioiTinh() + " " + svmm.getDiemTB() + " " + svmm.getDonVi() + " " + svmm.getLuong());
+                fw.append("\n");
+            }
+        }
+        fw.close();
+    }
+
+    public static boolean isNumeric(String str) {
+        try {
+            Double.parseDouble(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
     public FormSinhVien() {
@@ -49,6 +77,7 @@ public class FormSinhVien extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -57,7 +86,6 @@ public class FormSinhVien extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtNgaySinh = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtGioiTinh = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtDiemTB = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -70,6 +98,8 @@ public class FormSinhVien extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         txtLuong = new javax.swing.JTextField();
         btnnhap = new javax.swing.JButton();
+        gtNu = new javax.swing.JRadioButton();
+        gtNam = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -90,8 +120,6 @@ public class FormSinhVien extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Ngày Sinh: ");
-
-        txtGioiTinh.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("Giới Tính:");
@@ -130,6 +158,14 @@ public class FormSinhVien extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(gtNu);
+        gtNu.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        gtNu.setText("Nu");
+
+        buttonGroup1.add(gtNam);
+        gtNam.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        gtNam.setText("Nam");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -146,8 +182,12 @@ public class FormSinhVien extends javax.swing.JFrame {
                     .addComponent(jLabel6))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addComponent(gtNam)
+                        .addGap(27, 27, 27)
+                        .addComponent(gtNu))
                     .addComponent(txtDiemTB, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtMaSV, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -199,11 +239,16 @@ public class FormSinhVien extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(txtNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(txtGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(jLabel5))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(gtNu)
+                                    .addComponent(gtNam))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
                             .addComponent(txtDiemTB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -222,7 +267,7 @@ public class FormSinhVien extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel11)
                             .addComponent(txtLuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(btnnhap)
                 .addGap(33, 33, 33))
         );
@@ -243,6 +288,33 @@ public class FormSinhVien extends javax.swing.JFrame {
 
     private void btnnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnhapActionPerformed
 
+        String gioiTinh = null;
+        if (gtNam.isSelected()) {
+            gioiTinh = "Nam";
+        }
+        if (gtNu.isSelected()) {
+            gioiTinh = "Nu";
+
+        }
+        if (txtHocPhi.getText().equals("")) {
+            SinhVienMatMa sv = new SinhVienMatMa(txtDonVi.getText(), Integer.parseInt(txtLuong.getText()), txtMaSV.getText(), txtHoTen.getText(), txtNgaySinh.getText(), gioiTinh, Double.parseDouble(txtDiemTB.getText()));
+            list.add(sv);
+            try {
+                ghifileSVMM("svmm.dat", list);
+                System.out.println("ghi file thành công");
+            } catch (IOException ex) {
+                Logger.getLogger(FormSinhVien.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            SinhVienATTT sv = new SinhVienATTT(Integer.parseInt(txtHocPhi.getText()), txtMaSV.getText(), txtHoTen.getText(), txtNgaySinh.getText(), gioiTinh, Double.parseDouble(txtDiemTB.getText()));
+            list.add(sv);
+            try {
+                ghifileSVMM("svattt.dat", list);
+                System.out.println("ghi file thành công");
+            } catch (IOException ex) {
+                Logger.getLogger(FormSinhVien.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btnnhapActionPerformed
 
     /**
@@ -282,6 +354,9 @@ public class FormSinhVien extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnnhap;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JRadioButton gtNam;
+    private javax.swing.JRadioButton gtNu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -296,7 +371,6 @@ public class FormSinhVien extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtDiemTB;
     private javax.swing.JTextField txtDonVi;
-    private javax.swing.JTextField txtGioiTinh;
     private javax.swing.JTextField txtHoTen;
     private javax.swing.JTextField txtHocPhi;
     private javax.swing.JTextField txtLuong;

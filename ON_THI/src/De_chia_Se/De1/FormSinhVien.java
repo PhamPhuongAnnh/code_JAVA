@@ -1,4 +1,4 @@
-/*
+           /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -27,16 +28,27 @@ public class FormSinhVien extends javax.swing.JFrame {
     public FormSinhVien() {
         initComponents();
     }
-     public static void ghifile(String path, List<Person> listNV) throws IOException {
+
+    public static void ghifile(String path, List<Person> listNV) throws IOException {
         File f = new File(path);
-        try (FileWriter fw = new FileWriter(f)) {
+        try ( FileWriter fw = new FileWriter(f)) {
             for (Person item : listNV) {
-                Student  gv = (Student) item;
-                fw.append( gv.getHoten()+" " + gv.getMaSV()+ " " +  gv.getGioiTinh()+ " " +  gv.getDiaChi()+ " " +gv.getNgaySinh()+ " "+ gv.getEmail()+" "+gv.getDiemTK());
+                Student gv = (Student) item;
+                fw.append(gv.getHoten() + " " + gv.getMaSV() + " " + gv.getGioiTinh() + " " + gv.getDiaChi() + " " + gv.getNgaySinh() + " " + gv.getEmail() + " " + gv.getDiemTK());
                 fw.append("\n");
             }
         }
     }
+
+    public static boolean isNumeric(String str) {
+        try {
+            Double.parseDouble(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -46,24 +58,26 @@ public class FormSinhVien extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnthem = new javax.swing.JButton();
-        hoten = new javax.swing.JTextField();
+        txtHoTen = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        ngaysinh = new javax.swing.JTextField();
+        txtngaySinh = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        diachi = new javax.swing.JTextField();
+        txtDiaChi = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        gioitinh = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        maSV = new javax.swing.JTextField();
+        txtMaSV = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        email = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        diem = new javax.swing.JTextField();
+        txtDiem = new javax.swing.JTextField();
         btnluu = new javax.swing.JButton();
+        gtNam = new javax.swing.JRadioButton();
+        gtNu = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,37 +95,35 @@ public class FormSinhVien extends javax.swing.JFrame {
             }
         });
 
-        hoten.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtHoTen.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Ngày sinh:");
 
-        ngaysinh.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtngaySinh.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Địa chỉ: ");
 
-        diachi.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtDiaChi.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("Giới tính: ");
 
-        gioitinh.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setText("Mã SV: ");
 
-        maSV.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtMaSV.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setText("Email: ");
 
-        email.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtEmail.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel8.setText("Điểm: ");
 
-        diem.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtDiem.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         btnluu.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnluu.setText("Lưu");
@@ -120,6 +132,16 @@ public class FormSinhVien extends javax.swing.JFrame {
                 btnluuActionPerformed(evt);
             }
         });
+
+        buttonGroup1.add(gtNam);
+        gtNam.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        gtNam.setText("Nam");
+        gtNam.setBorderPainted(true);
+
+        buttonGroup1.add(gtNu);
+        gtNu.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        gtNu.setText("Nữ ");
+        gtNu.setBorderPainted(true);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -141,32 +163,36 @@ public class FormSinhVien extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(50, 50, 50)
-                                .addComponent(ngaysinh, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtngaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addGap(50, 50, 50)
-                                .addComponent(diachi, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
-                                .addGap(50, 50, 50)
-                                .addComponent(gioitinh, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(309, 309, 309))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel8)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(diem, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtDiem, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel7)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel6)
                                     .addGap(50, 50, 50)
-                                    .addComponent(maSV, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(gtNam)
+                                            .addGap(32, 32, 32)
+                                            .addComponent(gtNu))
+                                        .addComponent(txtMaSV, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(50, 50, 50)
-                                .addComponent(hoten, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(txtHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -177,36 +203,38 @@ public class FormSinhVien extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(hoten, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(ngaysinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtngaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(diachi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(gioitinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(gtNam)
+                        .addComponent(gtNu))
+                    .addComponent(jLabel5))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(maSV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMaSV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(diem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(45, 45, 45)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnthem)
                     .addComponent(btnluu))
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -224,27 +252,67 @@ public class FormSinhVien extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemActionPerformed
-        String hoTen = hoten.getText();
-        String maSV = this.maSV.getText();
-        String email = this.email.getText();
-        String gioiTinh = gioitinh.getText();
-        String diaChi = diachi.getText();
-        String ngaySinh = ngaysinh.getText();
-        double diemTB = Double.parseDouble(diem.getText());
+        StringBuilder sb = new StringBuilder(); 
+        if (txtHoTen.getText().equals("")) {
+            sb.append("Họ tên không được để trống\n");
+        }
+        if (txtDiaChi.getText().equals("")) {
+            sb.append("Địa chỉ không được để trống\n");
+        }
+        if (txtMaSV.getText().equals("")) {
+            sb.append("Mã sinh viên không được để trống\n");
+        }
+        if (txtEmail.getText().equals("")) {
+            sb.append("Email không được để trống\n");
+        }
+        if (txtngaySinh.getText().equals("")) {
+            sb.append("Ngày sinh không được để trống\n");
+        }
+        if(txtDiem.getText().equals("")){
+            sb.append("Điểm sinh viên không được để trống\n");
+        }
+        if (sb.length() > 0) {
+            JOptionPane.showMessageDialog(rootPane,
+                        sb.toString(), "Backup problem", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if(isNumeric(txtDiem.getText())==false){
+             JOptionPane.showMessageDialog(rootPane,
+                    "Diểm không nhập đúng định dạng", "Backup problem", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        if(!gtNam.isSelected() && !gtNu.isSelected()){
+            JOptionPane.showMessageDialog(rootPane,
+                    "Vui lòng chọn giới tính", "Backup problem", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        String hoTen = txtHoTen.getText();
+        String maSV = this.txtMaSV.getText();
+        String email = this.txtEmail.getText();
+        
+        String gioiTinh = null;
+        if (gtNam.isSelected()) {
+            gioiTinh = "Nam";
+        }
+        if (gtNu.isSelected()) {
+            gioiTinh = "Nu";
+        }
+        String diaChi = txtDiaChi.getText();
+        String ngaySinh = txtngaySinh.getText();
+        double diemTB = Double.parseDouble(txtDiem.getText());
         Student st = new Student(maSV, email, diemTB, hoTen, ngaySinh, diaChi, gioiTinh);
         listSV.add(st);
         System.out.println(st.toString());
-        hoten.setText("");
-        this.maSV.setText("");
-        this.email.setText("");
-        gioitinh.setText("");
-        diachi.setText("");
-        ngaysinh.setText("");
-        diem.setText("");
+        txtHoTen.setText("");
+        this.txtMaSV.setText("");
+        this.txtEmail.setText("");
+        txtDiaChi.setText("");
+        txtngaySinh.setText("");
+        txtDiem.setText("");
     }//GEN-LAST:event_btnthemActionPerformed
 
     private void btnluuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnluuActionPerformed
-        
         try {
             ghifile("D:\\code\\Java_work\\code_JAVA\\ON_THI\\src\\De_chia_Se\\De1\\sinhvien.dat", listSV);
             System.out.println("Lưu file thành công");
@@ -291,11 +359,9 @@ public class FormSinhVien extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnluu;
     private javax.swing.JButton btnthem;
-    private javax.swing.JTextField diachi;
-    private javax.swing.JTextField diem;
-    private javax.swing.JTextField email;
-    private javax.swing.JTextField gioitinh;
-    private javax.swing.JTextField hoten;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JRadioButton gtNam;
+    private javax.swing.JRadioButton gtNu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -305,7 +371,11 @@ public class FormSinhVien extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField maSV;
-    private javax.swing.JTextField ngaysinh;
+    private javax.swing.JTextField txtDiaChi;
+    private javax.swing.JTextField txtDiem;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtHoTen;
+    private javax.swing.JTextField txtMaSV;
+    private javax.swing.JTextField txtngaySinh;
     // End of variables declaration//GEN-END:variables
 }

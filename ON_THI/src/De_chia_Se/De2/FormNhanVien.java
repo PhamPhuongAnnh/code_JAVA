@@ -26,19 +26,7 @@ public class FormNhanVien extends javax.swing.JFrame {
      * Creates new form FormNhanVien
      */
     private DefaultTableModel tableModel;
- static List<Person> list = new ArrayList<>();
-
-//    public static void ghifile(String path, List<Person> listNV) throws IOException {
-//        File f = new File(path);
-//        FileWriter fw = new FileWriter(f);
-//        for (Person item : listNV) {
-//            NhanVien nv = (NhanVien) item;
-//            fw.append(nv.getHoten() + "$" + nv.getNgaySinh() + "$" + nv.getDiachi() + "$" + nv.getGioiTinh() + "$" + nv.getPhongBan() + "$" + nv.getHeSoLuong()
-//                    + "$" + nv.getThamNien() + "$" + nv.getLuongCoBan());
-//            fw.append("\n");
-//        }
-//        fw.close();
-//    }
+    static List<Person> list = new ArrayList<>();
 
     public static List<Person> docFile(String path) {
 
@@ -49,9 +37,6 @@ public class FormNhanVien extends javax.swing.JFrame {
             String line = reader.readLine();
             while (line != null) {
                 String[] item = line.split("\\$");
-//                System.out.println(item[0]);
-//                System.out.println(line);
-
                 NhanVien nv = new NhanVien(item[4], Float.parseFloat(item[5]), Float.parseFloat(item[7]), Integer.parseInt(item[6]), item[0], item[1], item[2], item[3]);
                 list.add(nv);
                 line = reader.readLine();
@@ -67,7 +52,10 @@ public class FormNhanVien extends javax.swing.JFrame {
     public FormNhanVien() {
         initComponents();
         tableModel = (DefaultTableModel) tblSV.getModel();
-          list = docFile("D:\\code\\Java_work\\code_JAVA\\ON_THI\\src\\De_chia_Se\\De2\\sinhvien.dat");
+          list = docFile("D:\\code\\Java_work\\code_JAVA\\ON_THI\\src\\De_chia_Se\\De2\\nhanvien.dat");
+          for(Person item: list){
+              System.out.println(item.toString());
+          }
         for (Person item : list) {
             NhanVien nv = (NhanVien) item;
             tableModel.addRow(new Object[]{nv.getHoten(), nv.getNgaySinh(), nv.getGioiTinh(), nv.getDiachi(), nv.getPhongBan(), nv.getHeSoLuong(), nv.getThamNien(), nv.getLuongCoBan(), nv.luongTHuLinh()});
@@ -92,7 +80,8 @@ public class FormNhanVien extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel1.setText("Form nhập thông tin sinh viên");
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Thông tin sinh viên");
 
         tblSV.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -108,18 +97,14 @@ public class FormNhanVien extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(212, 212, 212)
-                .addComponent(jLabel1)
-                .addContainerGap(381, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1070, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(17, 17, 17)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE))
         );
 
