@@ -18,7 +18,7 @@ public class Main {
     private static List<SanPham> listSP = new ArrayList<>();
     private static List<KhachHang> listKH = new ArrayList<>();
     private static List<HoaDon> listHD = new ArrayList<>();
-
+//menu
     public static void menu() {
         System.out.println("_________MENU__________");
         System.out.println("1. Nhap thong tin san pham");
@@ -38,9 +38,10 @@ public class Main {
         System.out.println("Nhap thong tin san pham: ");
         SanPham sp1 = new SanPham();
         sp1.nhap();
-        int flag = 0;
+        int flag = 0;// đánh dấu xem sản phẩm có trùng mã không 
         for (SanPham item : listSP) {
             if (item.getMaSP().equals(sp1.getMaSP())) {
+//                tính số  lượng tăng lên nếu trùng od
                 int soLuong = item.getSoLuong() + sp1.getSoLuong();
                 item.setSoLuong(soLuong);
                 flag = 1;
@@ -50,7 +51,7 @@ public class Main {
             listSP.add(sp1);
         }
         int flag1 = 0;
-
+//        nhập  thông tin tiếp theo nếu muốn nhập sản phẩm tiếp theo
         while (true) {
             System.out.println("1. Nhap tiep");
             System.out.println("Nhan so bat ki de ket thuc");
@@ -79,12 +80,11 @@ public class Main {
         KhachHang kh = new KhachHang();
         kh.nhap();
         listKH.add(kh);
-
     }
 //    3
 
     public static void suaTTSP(String ma) {
-        int flag = 0;
+        int flag = 0;// đánh dấu xem có tìm thấy sản phẩm không
         for (SanPham item : listSP) {
             if (item.getMaSP().equals(ma)) {
                 System.out.println("Ban dang sua thong tin cua san pham: " + item.getTenSP());
@@ -118,28 +118,28 @@ public class Main {
 
 //    5
     public static void muaHang(KhachHang kh) {
-        HoaDon hd = new HoaDon();
-        List<SanPham> sanPhamMua = new ArrayList<>();
+        HoaDon hd = new HoaDon();// tạo 1 hóa đơn sau mỗi lần mua
+        List<SanPham> sanPhamMua = new ArrayList<>();// list sản phẩm trong mỗi hóa đơn
         System.out.println("nhap ma san pham muon  mua");
         String masp1 = sc.nextLine();
         double tongtien = 0;
         int flag = 0;
         for (SanPham item : listSP) {
-            if (item.getMaSP().equals(masp1)) {
+            if (item.getMaSP().equals(masp1)) {// kiểm tra xem có mã sản phẩm cần mua hay không
                 System.out.println("Nhap so luong muon mua: ");
                 int soluong1 = sc.nextInt();
                 if (soluong1 > item.getSoLuong()) {
                     System.out.println("San pham khong du cung cap");
                 } else {
-                    int soLuong = item.getSoLuong() - soluong1;
+                    int soLuong = item.getSoLuong() - soluong1;// trừ số lượng đã mua 
                     item.setSoLuong(soLuong);
-                    SanPham sp1 = new SanPham();
+                    SanPham sp1 = new SanPham();// tạo 1 sản phẩm mới để thêm vào list trong hóa đơn
                     sp1.setSoLuong(soluong1);
                     sp1.setMaSP(masp1);
                     sp1.setDonGia(item.getDonGia());
                     sp1.setNgaySX(item.getNgaySX());
                     sp1.setTenSP(item.getTenSP());
-                    tongtien += soluong1 * item.getDonGia();
+                    tongtien += soluong1 * item.getDonGia();// tính tiền
                     sanPhamMua.add(sp1);
                 }
                 flag = 1;
@@ -192,6 +192,7 @@ public class Main {
         hd.setListSP(sanPhamMua);
         hd.setTongtien(tongtien);       
         listHD.add(hd); 
+        
     }
     
 //    6
@@ -202,7 +203,7 @@ public class Main {
                 max = item.getTongtien(); 
             }
         }
-        
+    
         for(HoaDon item: listHD){
             if(item.getTongtien() == max){
                 System.out.println(item.getKh().toString());
