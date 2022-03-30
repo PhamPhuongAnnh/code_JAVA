@@ -4,6 +4,7 @@
  */
 package KMA_SanSung;
 
+import java.math.BigInteger;
 import java.util.Scanner;
 
 /**
@@ -57,27 +58,16 @@ public class DaoVang {
     }
 
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        int testCase = input.nextInt();
-        int[] values = new int[testCase];
-
-        for (int test = 0; test < testCase; test++) {
-            int hight = input.nextInt();
-            int width = input.nextInt();
-            int[][] A = new int[hight][width];
-
-            for (int i = 0; i < hight; i++) {
-                for (int j = 0; j < width; j++) {
-                    A[i][j] = input.nextInt();
-                }
-            }
-
-            values[test] = calculate(A);
-        }
-
-        System.out.println("");
-        for (int test = 0; test < testCase; test++) {
-            System.out.println("#" + (test + 1) + " " + values[test]);
-        }
+        //System.setIn(new FileInputStream("D:\\Input\\input.txt"));
+         Scanner sc = new Scanner(System.in);
+        int a, b;
+        int d1, d2;
+        a = sc.nextInt();
+        b = sc.nextInt();
+        d1 = sc.nextInt();
+        d2 = sc.nextInt();
+ 
+        System.out.printf(String.format("%d" + " : " + "%d"
+                + " = " + "%" + d1 + "." + d2 + "f", a, b, (float) a / b));
     }
 }

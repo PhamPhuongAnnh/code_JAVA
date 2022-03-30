@@ -44,8 +44,6 @@ public class Main {
             String line  = reader.readLine();
             while (line!=null) {                
                 String[] item = line.split("\\$");
-//                System.out.println(item[0]);
-//                System.out.println(line);
                 NhanVien nv = new NhanVien(item[4], Float.parseFloat(item[5]), Integer.parseInt(item[6]),Float.parseFloat(item[7]) ,item[0], item[1], item[2], item[3]);
                 list.add(nv);
                 line = reader.readLine();

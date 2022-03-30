@@ -14,13 +14,11 @@ import java.util.Scanner;
 public class TABEG011 {
 
     public static void main(String[] args) {
+          // System.setIn(new FileInputStream("F:\\input.txt"));
         Scanner sc = new Scanner(System.in);
-
         double a = sc.nextDouble();
-
         int d1 = sc.nextInt();
         int d2 = sc.nextInt();
-
-        System.out.println("a = " + String.format("%" + d1 + "." + d2 + "f", a));
+        System.out.printf("a = " + String.format("%" + d1 + "." + d2 + "f", a));
     }
 }

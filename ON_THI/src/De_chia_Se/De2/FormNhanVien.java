@@ -49,19 +49,24 @@ public class FormNhanVien extends javax.swing.JFrame {
         return list;
 
     }
-    public FormNhanVien() {
-        initComponents();
-        tableModel = (DefaultTableModel) tblSV.getModel();
-          list = docFile("D:\\code\\Java_work\\code_JAVA\\ON_THI\\src\\De_chia_Se\\De2\\nhanvien.dat");
-          for(Person item: list){
-              System.out.println(item.toString());
-          }
+
+    public void hienthi() {
+        tableModel.setNumRows(0);
         for (Person item : list) {
             NhanVien nv = (NhanVien) item;
             tableModel.addRow(new Object[]{nv.getHoten(), nv.getNgaySinh(), nv.getGioiTinh(), nv.getDiachi(), nv.getPhongBan(), nv.getHeSoLuong(), nv.getThamNien(), nv.getLuongCoBan(), nv.luongTHuLinh()});
         }
     }
-   
+
+    public FormNhanVien() {
+        initComponents();
+        tableModel = (DefaultTableModel) tblSV.getModel();
+        list = docFile("D:\\code\\Java_work\\code_JAVA\\ON_THI\\src\\De_chia_Se\\De2\\nhanvien.dat");
+//        for (Person item : list) {
+//            System.out.println(item.toString());
+//        }
+//        hienthi();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -76,6 +81,7 @@ public class FormNhanVien extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblSV = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,19 +99,34 @@ public class FormNhanVien extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblSV);
 
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton1.setText("Lấy Dữ Liệu");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1070, Short.MAX_VALUE)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(227, 227, 227)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addGap(17, 17, 17)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
+                .addGap(27, 27, 27)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -123,6 +144,17 @@ public class FormNhanVien extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        tableModel = (DefaultTableModel) tblSV.getModel();
+        tableModel.setRowCount(0);
+        list = docFile("D:\\code\\Java_work\\code_JAVA\\ON_THI\\src\\De_chia_Se\\De2\\nhanvien.dat");
+        for (Person item : list) {
+            System.out.println(item.toString());
+        }
+
+       hienthi();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,6 +192,7 @@ public class FormNhanVien extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
